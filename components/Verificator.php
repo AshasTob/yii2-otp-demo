@@ -29,22 +29,16 @@ class Verificator
      */
     public function __construct($secret, $fuzziness = 3)
     {
-        Logger::log("Secret key: $secret");
         $this->secret = $secret;
 
         $key = Base32Static::decode($this->secret);
-        Logger::log("Key(base 32 decode): $key");
 
         $this->algorithm = new Algorithm();
         $unixTimeStamp = floor(time() / 30);
-        Logger::log("UnixTimeStamp (time()/30): $unixTimeStamp <br/>");
 
         for ($i = 0; $i < $fuzziness; $i++) {
             $checktime = $unixTimeStamp - $i;
-            Logger::log("Calculating oath_hotp from (int)(unixtimestamp - " . 30 * $i . "sec offset): $checktime basing on secret key");
-
             $tokenCode = $this->algorithm->oath_hotp($key, $checktime);
-            Logger::log("CheckTime: $checktime, oath_hotp: $tokenCode");
 
             $this->codes[] = $this->algorithm->oath_truncate($tokenCode, 6);
         }

@@ -13,7 +13,7 @@ namespace app\components;
 
 /**
  * Class Base32Static
- * @package app\models
+ * @package app\components
  */
 class Base32Static
 {

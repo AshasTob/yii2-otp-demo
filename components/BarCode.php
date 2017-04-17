@@ -8,7 +8,7 @@ namespace app\components;
 
 /**
  * Class BarCode
- * @package app\models
+ * @package app\components
  */
 class BarCode
 {

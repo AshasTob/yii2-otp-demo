@@ -10,7 +10,7 @@ namespace app\components;
 
 /**
  * Class Algorithm
- * @package app\models
+ * @package app\components
  */
 class Algorithm
 {
